@@ -9,16 +9,32 @@ namespace Calculator
         /// <summary>
         /// It calculates finances per year
         /// </summary>
-        void CalculateAnnualFinances();
+        decimal CalculateAnnualFinances(decimal input, bool isSpecialTreatment);
+
+        /// <summary>
+        /// It calculates finances per year
+        /// </summary>
+        decimal CalculateAnnualFinances(decimal input);
 
         /// <summary>
         /// It calculates finances per month
         /// </summary>
-        void CalculateMonthlyFinances();
+        decimal CalculateMonthlyFinances(decimal input, bool isSpecialTreatment);
+
+        /// <summary>
+        /// It calculates finances per month
+        /// </summary>
+        decimal CalculateMonthlyFinances(decimal input);
+
 
         /// <summary>
         /// It calculates finances per week
         /// </summary>
-        void CalculateWeeklyFinances();
+        decimal CalculateWeeklyFinances(decimal input, bool isSpecialTreatment);
+
+        /// <summary>
+        /// It calculates finances per week
+        /// </summary>
+        decimal CalculateWeeklyFinances(decimal input);
     }
 }

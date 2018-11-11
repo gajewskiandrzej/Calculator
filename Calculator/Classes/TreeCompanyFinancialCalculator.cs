@@ -4,21 +4,57 @@ using System.Text;
 
 namespace Calculator.Classes
 {
-    class TreeCompanyFinancialCalculator : IFinancialCalculator
+    public class TreeCompanyFinancialCalculator : CompanyFinancialCalculator, IFinancialCalculator //AbstractCompanyFinancialCalculator 
     {
-        public void CalculateAnnualFinances()
+        private const decimal TREE_FINANCE_FACTOR = 0.3m;
+
+        public decimal CalculateAnnualFinances(decimal input, bool isSpecialTreatment)
         {
-            throw new NotImplementedException();
+            if (isSpecialTreatment)
+            {
+                return input * 12 * TREE_FINANCE_FACTOR * CompanyFinancialCalculator.SPECIAL_TREATMENT_FACTOR;
+            }
+            return input * 12 * TREE_FINANCE_FACTOR;
         }
 
-        public void CalculateMonthlyFinances()
+        public decimal CalculateAnnualFinances(decimal input)
         {
-            throw new NotImplementedException();
+            return input * 12 * TREE_FINANCE_FACTOR;
         }
 
-        public void CalculateWeeklyFinances()
+        public decimal CalculateMonthlyFinances(decimal input, bool isSpecialTreatment)
         {
-            throw new NotImplementedException();
+            if (isSpecialTreatment)
+            {
+                return input * TREE_FINANCE_FACTOR * CompanyFinancialCalculator.SPECIAL_TREATMENT_FACTOR;
+            }
+            return input * TREE_FINANCE_FACTOR;
+        }
+
+        public decimal CalculateMonthlyFinances(decimal input)
+        {
+            return input * TREE_FINANCE_FACTOR;
+        }
+
+
+        public decimal CalculateWeeklyFinances(decimal input, bool isSpecialTreatment)
+        {
+            if (isSpecialTreatment)
+            {
+                return input * 0.25m * TREE_FINANCE_FACTOR * CompanyFinancialCalculator.SPECIAL_TREATMENT_FACTOR;
+            }
+            return input * 0.25m * TREE_FINANCE_FACTOR;
+        }
+        
+        public decimal CalculateWeeklyFinances(decimal input)
+        {
+            return input * 0.25m * TREE_FINANCE_FACTOR;
+        }
+
+
+        public override decimal CalculateVat(decimal input)
+        {
+            return input * 0.5m;
         }
     }
 }
